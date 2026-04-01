@@ -13,7 +13,7 @@ public class Electronica extends Producte{
 
     @Override
     public double calcularPreu(double preu){
-        return preu + preu*((double) this.diesGarantia /365)*0.1;
+        return preu + preu*((double) this.diesGarantia /365) * 0.1;
     }
 
     public int getDiesGarantia() {
