@@ -27,10 +27,16 @@ public class Model  {
      */
     public static void mostrarProductes(){
 
+//        Comparable<Producte> comparadorPerNom = new Comparable<Producte>(){
+//            @Override
+//            public int compareTo(Producte p) {
+//                return this.compareTo(p);
+//            }
+//        };
+
         /// Ordenar per preu (es podria fer amb el nom)
         List<Producte> producteStream = productes.keySet().stream()
-                .sorted(Comparator.comparingInt(Producte::getnProducte))
-//                .sorted((a,b) -> a.getnProducte() - b.getnProducte())
+                .sorted((a,b) -> a.getnProducte() - b.getnProducte())
                 .toList();
 
         producteStream.forEach(System.out::println);

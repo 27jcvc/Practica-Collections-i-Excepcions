@@ -16,8 +16,17 @@ public class Electronica extends Producte{
         return preu + preu*((double) this.diesGarantia /365)*0.1;
     }
 
+    public int getDiesGarantia() {
+        return diesGarantia;
+    }
+
     @Override
     public int compareTo(Producte p) {
-        return (int) (this.preu - p.getPreu());
+        if (p instanceof Electronica) {
+            ///  Integer.compare retorna positivo negativo o 0 si es igual
+            return Integer.compare(this.diesGarantia, ((Electronica) p).getDiesGarantia());
+        }
+
+        return 0;
     }
 }

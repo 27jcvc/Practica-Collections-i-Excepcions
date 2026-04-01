@@ -1,0 +1,1 @@
+He fet que es comparin mitjançant el nom perquè el codi de barres no té gaire sentit i va canviant constantment.

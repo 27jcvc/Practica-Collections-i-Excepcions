@@ -45,8 +45,19 @@ public class Alimentacio extends Producte{
                             ,super.toString(), dataCaducitat.format(format));
     }
 
+    public LocalDate getDataCaducitat() {
+        return dataCaducitat;
+    }
+
     @Override
     public int compareTo(Producte p) {
-            return (int) (this.preu - p.getPreu());
+        if (p instanceof Alimentacio) {
+            long fecha = this.dataCaducitat.toEpochDay();
+            long fechaProducte = ((Alimentacio) p).getDataCaducitat().toEpochDay();
+
+            // Long.compare devuelve un int (-1, 0 o 1) automáticamente
+            return Long.compare(fecha, fechaProducte);
+        }
+        return 0;
     }
 }

@@ -9,8 +9,17 @@ public class Textil extends Producte{
         this.composicio = composicio;
     }
 
+    public String getComposicio() {
+        return composicio;
+    }
+
     @Override
     public int compareTo(Producte p) {
-        return (int) (this.preu - p.getPreu());
+        if (p instanceof Textil){
+            /// Ordenar alfabeticament
+            return this.composicio.compareTo(((Textil) p).getComposicio());
+        }
+
+        return 0;
     }
 }
