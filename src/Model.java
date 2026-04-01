@@ -52,6 +52,11 @@ public class Model  {
         ticket.append(String.format("%30s%n","Sapamercat"));
         ticket.append("-".repeat(50)).append("\n");
 
+        /// Data del ticket
+        ticket.append("-".repeat(50)).append("\n");
+        ticket.append(String.format("%30s%n", Producte.getDataActual()));
+        ticket.append("-".repeat(50)).append("\n");
+
 
         /// Capçalera del Ticket
         ticket.append("-".repeat(50)).append("\n");

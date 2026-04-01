@@ -10,9 +10,7 @@ public class Alimentacio extends Producte{
     /**
      * guardamos localDate porque sino hay que guardar la hora tambien
      */
-    LocalDateTime dataActual = LocalDateTime.now();
     LocalDate dataCaducitat;
-    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 //    public Alimentacio(String nom, double preu, int codiDeBarres, LocalDate dataCaducitat) throws Exception {
 //        super(nom, preu, codiDeBarres);

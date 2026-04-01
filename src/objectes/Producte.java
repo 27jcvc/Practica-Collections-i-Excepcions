@@ -1,5 +1,7 @@
 package objectes;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public abstract class Producte implements Comparable<Producte>{
@@ -9,6 +11,10 @@ public abstract class Producte implements Comparable<Producte>{
     protected String nom;
     protected double preu;
     protected int codiDeBarres;
+
+    /// Data Actual i format que tenim de totes les dates
+    static LocalDateTime dataActual = LocalDateTime.now();
+    static DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Producte(String nom, double preu, int codiDeBarres) throws Exception {
         this.nom = nom;
@@ -50,6 +56,10 @@ public abstract class Producte implements Comparable<Producte>{
 
     public int getnProducte() {
         return nProducte;
+    }
+
+    public static String getDataActual() {
+        return dataActual.format(format);
     }
 
     @Override
