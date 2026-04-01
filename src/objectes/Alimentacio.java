@@ -14,17 +14,18 @@ public class Alimentacio extends Producte{
     LocalDate dataCaducitat;
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public Alimentacio(String nom, double preu, int codiDeBarres, LocalDate dataCaducitat) throws Exception {
-        super(nom, preu, codiDeBarres);
+//    public Alimentacio(String nom, double preu, int codiDeBarres, LocalDate dataCaducitat) throws Exception {
+//        super(nom, preu, codiDeBarres);
+//
+//        this.dataCaducitat = dataCaducitat;
+//        this.preu = calcularPreu(preu);
+//    }
 
-        this.dataCaducitat = dataCaducitat;
-        this.preu = calcularPreu(preu);
-
-    }
     public Alimentacio(String nom, double preu, int codiDeBarres, String dataCaducitat) throws Exception {
         super(nom, preu, codiDeBarres);
 
-        this.dataCaducitat = LocalDate.parse(dataCaducitat, format);;
+        this.dataCaducitat = LocalDate.parse(dataCaducitat, format);
+        this.preu = calcularPreu(preu);
     }
 
     @Override
@@ -42,5 +43,10 @@ public class Alimentacio extends Producte{
                             %s       Data caducitat: %s
                             """
                             ,super.toString(), dataCaducitat.format(format));
+    }
+
+    @Override
+    public int compareTo(Producte p) {
+            return (int) (this.preu - p.getPreu());
     }
 }

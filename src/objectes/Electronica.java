@@ -15,4 +15,9 @@ public class Electronica extends Producte{
     public double calcularPreu(double preu){
         return preu + preu*((double) this.diesGarantia /365)*0.1;
     }
+
+    @Override
+    public int compareTo(Producte p) {
+        return (int) (this.preu - p.getPreu());
+    }
 }

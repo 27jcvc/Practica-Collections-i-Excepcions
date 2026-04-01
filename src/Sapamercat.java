@@ -3,27 +3,21 @@ import objectes.Electronica;
 import objectes.Producte;
 import objectes.Textil;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Sapamercat {
+
+    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
+
+        /// Inicialitzar dades dels productes
+        /// Execuctar menu
         try{
             iniDades();
+            menuPrincipal(scan);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        Scanner scan = new Scanner(System.in);
-//        Mal formateada la fecha
-//        Producte p1 = new Alimentacio("Ojalata", 2.0,12345,"2028-01-27");
-//        Producte p2 = new Alimentacio("Periodico", 5.99,12123123,"2027-01-02");
-//        Producte p3 = new Alimentacio("Champion", 10.99,123123123,"2026-04-03");
-
-        ArrayList<Producte> productes = new ArrayList<>();
-
-        menuPrincipal(scan);
-
     }
 
     public static void menuPrincipal(Scanner scan){
@@ -35,7 +29,7 @@ public class Main {
             try{
                 opcio = Integer.parseInt(scan.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Numero malament introduit");
+                Vista.mostrarMissatge("Numero malament introduit");
                 continue;
             }
             
@@ -44,7 +38,7 @@ public class Main {
                     menuProductes(scan);
                     break;
                 case 2:
-                    Vista.mostrarMissatge(Model.generarTicket(true));
+                    Vista.mostrarMissatge(Model.generarTicket());
                     break;
                 case 3:
                     Model.mostrarProductes();
@@ -113,7 +107,7 @@ public class Main {
                 codiDeBarres = Integer.parseInt(scan.nextLine());
 
                 producte = new Alimentacio(nomProducte, preu, codiDeBarres, dataCaducitat);
-                Model.afegirProducte(producte);
+                Model.afegirProducte(producte, 1);
                 break;
             case 2:
                 Vista.mostrarMissatge("Afegir textil");
@@ -131,7 +125,7 @@ public class Main {
                 codiDeBarres = Integer.parseInt(scan.nextLine());
 
                 producte = new Textil(nomProducte,preu, codiDeBarres, composicio);
-                Model.afegirProducte(producte);
+                Model.afegirProducte(producte, 1);
 
                 break;
             case 3:
@@ -150,7 +144,7 @@ public class Main {
                 codiDeBarres = Integer.parseInt(scan.nextLine());
 
                 producte = new Electronica(nomProducte, preu, codiDeBarres, garantia);
-                Model.afegirProducte(producte);
+                Model.afegirProducte(producte, 1);
                 break;
         }
 
@@ -159,20 +153,20 @@ public class Main {
     public static void iniDades() throws Exception {
         // --- PRODUCTOS DE ALIMENTACIÓN ---
 // Formato: nom, preu, codiDeBarres, dataCaducitat (AAAA-MM-DD según vimos en tu error)
-        Model.afegirProducte(new Alimentacio("Llet de vaca", 1.20, 1001, "27/01/2028"));
-        Model.afegirProducte(new Alimentacio("Iogurt Natural", 0.50, 1002, "15/05/2025"));
-        Model.afegirProducte(new Alimentacio("Llet de vaca", 1.20, 1001, "27/01/2028"));
+        Model.afegirProducte(new Alimentacio("Llet de vaca", 1.20, 1001, "27/01/2028"), 1);
+        Model.afegirProducte(new Alimentacio("Iogurt Natural", 0.50, 1002, "15/05/2025"), 1);
+        Model.afegirProducte(new Alimentacio("Llet de vaca", 1.20, 1001, "27/01/2028"), 1);
 
 // --- PRODUCTOS DE TÈXTIL ---
 // Formato: nom, preu, codiDeBarres, composicio (String)
 
-        Model.afegirProducte(new Textil("Samarreta Algodó", 15.99, 2001, "100% Cotó"));
-        Model.afegirProducte(new Textil("Pantalons Jeans", 35.50, 2002, "98% Dením, 2% Elastà"));
+        Model.afegirProducte(new Textil("Samarreta Algodó", 15.99, 2001, "100% Cotó"), 1);
+        Model.afegirProducte(new Textil("Pantalons Jeans", 35.50, 2002, "98% Dením, 2% Elastà"), 1);
 
 // --- PRODUCTOS DE ELECTRÓNICA ---
 // Formato: nom, preu, codiDeBarres, diesGarantia (int)
-        Model.afegirProducte(new Electronica("Ratolí Gaming", 25.00, 3001, 730)); // 2 años
-        Model.afegirProducte(new Electronica("Teclat Mecànic", 55.00, 3002, 365)); // 1 año
-        Model.afegirProducte(new Electronica("Teclat Mecànic", 55.00, 3002, 365)); // 1 año
+        Model.afegirProducte(new Electronica("Ratolí Gaming", 25.00, 3001, 730), 1); // 2 años
+        Model.afegirProducte(new Electronica("Teclat Mecànic", 55.00, 3002, 365), 1); // 1 año
+        Model.afegirProducte(new Electronica("Teclat Mecànic", 55.00, 3002, 365), 1); // 1 año
     }
 }

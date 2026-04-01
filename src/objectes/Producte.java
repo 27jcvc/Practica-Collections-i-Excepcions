@@ -1,18 +1,14 @@
 package objectes;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class Producte {
-
+public abstract class Producte implements Comparable<Producte>{
 
     protected static int id = 1;
     protected int nProducte;
     protected String nom;
     protected double preu;
     protected int codiDeBarres;
-
-    // TODO: podria hacer un contador para la qt de productes (para que no supere los 100)
 
     public Producte(String nom, double preu, int codiDeBarres) throws Exception {
         this.nom = nom;
@@ -21,6 +17,7 @@ public abstract class Producte {
 
         this.nProducte = id++;
 
+        /// Si hi ha més de 100 productes surt una Exception.
         if (nProducte >= 100){
             throw new Exception("No es permeten més productes");
         }
@@ -51,6 +48,10 @@ public abstract class Producte {
         return preu;
     }
 
+    public int getnProducte() {
+        return nProducte;
+    }
+
     @Override
     public String toString() {
         return String.format("""
@@ -61,4 +62,7 @@ public abstract class Producte {
                             """
                             ,nProducte, nom, preu, codiDeBarres);
     }
+
+
+
 }
