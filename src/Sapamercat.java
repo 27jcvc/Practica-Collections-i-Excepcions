@@ -74,6 +74,11 @@ public class Sapamercat {
     }
 
 
+    /**
+     * Funció per inicialitzar un producte de tipus alimentacio, textil o electronica
+     * @param opcio 1-2-3 depenen del tipus
+     * @throws Exception en cas de que qualsevol dato este malament introduit
+     */
     public static void inicialitzarProducte(int opcio) throws Exception {
 
         Scanner scan = new Scanner(System.in);
@@ -85,6 +90,7 @@ public class Sapamercat {
         String nomProducte;
 
         switch (opcio){
+                /// Aliment
             case 1:
                 Vista.mostrarMissatge("Afegir aliment");
 
@@ -109,6 +115,7 @@ public class Sapamercat {
                 Model.afegirProducte(producte, 1);
                 break;
             case 2:
+                /// Textil
                 Vista.mostrarMissatge("Afegir textil");
 
                 Vista.mostrarMissatge("Nom producte: ", false);
@@ -128,6 +135,7 @@ public class Sapamercat {
 
                 break;
             case 3:
+                /// Electronica
                 Vista.mostrarMissatge("Afegir electronica");
 
                 Vista.mostrarMissatge("Nom producte: ", false);
@@ -151,18 +159,18 @@ public class Sapamercat {
 
     public static void iniDades() throws Exception {
         // --- PRODUCTOS DE ALIMENTACIÓN ---
-// Formato: nom, preu, codiDeBarres, dataCaducitat (AAAA-MM-DD según vimos en tu error)
+// Formato: nom, preu, codiDeBarres, dataCaducitat (int)
         Model.afegirProducte(new Alimentacio("Llet de vaca", 1.20, 1001, "27/01/2028"), 1);
         Model.afegirProducte(new Alimentacio("Iogurt Natural", 0.50, 1002, "15/05/2025"), 1);
         Model.afegirProducte(new Alimentacio("Llet de vaca", 1.20, 1001, "27/01/2028"), 1);
 
-// --- PRODUCTOS DE TÈXTIL ---
+        // --- PRODUCTOS DE TÈXTIL ---
 // Formato: nom, preu, codiDeBarres, composicio (String)
 
         Model.afegirProducte(new Textil("Samarreta Algodó", 15.99, 2001, "100% Cotó"), 1);
         Model.afegirProducte(new Textil("Pantalons Jeans", 35.50, 2002, "98% Dením, 2% Elastà"), 1);
 
-// --- PRODUCTOS DE ELECTRÓNICA ---
+        // --- PRODUCTOS DE ELECTRÓNICA ---
 // Formato: nom, preu, codiDeBarres, diesGarantia (int)
         Model.afegirProducte(new Electronica("Ratolí Gaming", 25.00, 3001, 730), 1); // 2 años
         Model.afegirProducte(new Electronica("Teclat Mecànic", 55.00, 3002, 365), 1); // 1 año
