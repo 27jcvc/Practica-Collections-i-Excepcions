@@ -25,7 +25,6 @@ public class Sapamercat {
         
         do {
             Vista.mostrarMenuPrincipal();
-
             try{
                 opcio = Integer.parseInt(scan.nextLine());
             } catch (NumberFormatException e) {
@@ -64,9 +63,9 @@ public class Sapamercat {
                 opcio = Integer.parseInt(scan.nextLine());
                 inicialitzarProducte(opcio);
             } catch (NumberFormatException e) {
-                System.out.println("Opcio malament introduit");
+                Vista.mostrarMissatge("Opcio malament introduit");
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                Vista.mostrarMissatge(e.getMessage());
             }
 
 
@@ -89,13 +88,13 @@ public class Sapamercat {
             case 1:
                 Vista.mostrarMissatge("Afegir aliment");
 
-                System.out.print("Nom producte: ");
+                Vista.mostrarMissatge("Nom producte: ", false);
                 nomProducte = scan.nextLine();
 
-                System.out.print("Preu: ");
+                Vista.mostrarMissatge("Preu: ", false);
                 preu = Double.parseDouble(scan.nextLine().replaceAll(",","."));
 
-                System.out.print("Data de caducitat (dd/mm/aaaa): ");
+                Vista.mostrarMissatge("Data de caducitat (dd/mm/aaaa): ", false);
                 dataCaducitat = scan.nextLine().replaceAll("-", "/");
                 // Formato: 2 dígitos - 2 dígitos - 4 dígitos
                 if (!dataCaducitat.matches("\\d{2}/\\d{2}/\\d{4}")) {
@@ -103,7 +102,7 @@ public class Sapamercat {
                     throw new Exception("Data malament introduida");
                 }
 
-                System.out.print("Codi de Barres: ");
+                Vista.mostrarMissatge("Codi de Barres: ", false);
                 codiDeBarres = Integer.parseInt(scan.nextLine());
 
                 producte = new Alimentacio(nomProducte, preu, codiDeBarres, dataCaducitat);
@@ -112,16 +111,16 @@ public class Sapamercat {
             case 2:
                 Vista.mostrarMissatge("Afegir textil");
 
-                System.out.print("Nom producte: ");
+                Vista.mostrarMissatge("Nom producte: ", false);
                 nomProducte = scan.nextLine();
 
-                System.out.print("Preu: ");
+                Vista.mostrarMissatge("Preu: ", false);
                 preu = Double.parseDouble(scan.nextLine().replaceAll(",","."));
 
-                System.out.print("Composició: ");
+                Vista.mostrarMissatge("Composició: ", false);
                 composicio = scan.nextLine();
 
-                System.out.print("Codi de Barres: ");
+                Vista.mostrarMissatge("Codi de Barres: ", false);
                 codiDeBarres = Integer.parseInt(scan.nextLine());
 
                 producte = new Textil(nomProducte,preu, codiDeBarres, composicio);
@@ -131,16 +130,16 @@ public class Sapamercat {
             case 3:
                 Vista.mostrarMissatge("Afegir electronica");
 
-                System.out.print("Nom producte: ");
+                Vista.mostrarMissatge("Nom producte: ", false);
                 nomProducte = scan.nextLine();
 
-                System.out.print("Preu: ");
+                Vista.mostrarMissatge("Preu: ", false);
                 preu = Double.parseDouble(scan.nextLine().replaceAll(",","."));
 
-                System.out.print("Garantia (dies): ");
+                Vista.mostrarMissatge("Garantia (dies): ", false);
                 garantia = Integer.parseInt(scan.nextLine());
 
-                System.out.print("Codi de Barres: ");
+                Vista.mostrarMissatge("Codi de Barres: ", false);
                 codiDeBarres = Integer.parseInt(scan.nextLine());
 
                 producte = new Electronica(nomProducte, preu, codiDeBarres, garantia);

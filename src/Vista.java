@@ -3,7 +3,15 @@ import java.util.Scanner;
 public class Vista {
 
     public static void mostrarMissatge(String m){
-        System.out.println(m);
+            System.out.println(m);
+    }
+
+    public static void mostrarMissatge(String m, boolean saltLinea){
+        if (saltLinea){
+            System.out.println(m);
+        }else{
+            System.out.print(m);
+        }
     }
 
     public static void mostrarMenuPrincipal() {
